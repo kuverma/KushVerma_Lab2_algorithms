@@ -24,8 +24,12 @@ public class CurrencyDenominations {
 
 		for (int i = 0; i < size; i++) {
 			if (amount / currency[i] > 0) {
-				currvalid[i] = amount / currency[i];
-				amount = amount % currency[i];
+				try {
+					currvalid[i] = amount / currency[i];
+					amount = amount % currency[i];
+				} catch (ArithmeticException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		System.out.println("Your payment approach in order to give min no of notes will be");
